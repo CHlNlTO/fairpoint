@@ -102,9 +102,10 @@ export const DialogStackTrigger = ({
   if (asChild && children) {
     return cloneElement(children as ReactElement, {
       onClick: handleClick,
-      className: cn(className, (children as ReactElement).props.className),
+      className: cn(className, (children as ReactElement<{className?: string}>).props.className),
       ...props,
-    })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any)
   }
 
   return (
@@ -192,7 +193,7 @@ export const DialogStackBody = ({
         >
           <div className="pointer-events-auto relative flex w-full flex-col items-center justify-center">
             {Children.map(children, (child, index) =>
-              cloneElement(child as ReactElement, { index })
+              cloneElement(child as ReactElement<DialogStackChildProps>, { index })
             )}
           </div>
         </div>
@@ -317,9 +318,10 @@ export const DialogStackNext = ({
   if (asChild && children) {
     return cloneElement(children as ReactElement, {
       onClick: handleNext,
-      className: cn(className, (children as ReactElement).props.className),
+      className: cn(className, (children as ReactElement<{className?: string}>).props.className),
       ...props,
-    })
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any)
   }
 
   return (
@@ -363,9 +365,10 @@ export const DialogStackPrevious = ({
   if (asChild && children) {
     return cloneElement(children as ReactElement, {
       onClick: handlePrevious,
-      className: cn(className, (children as ReactElement).props.className),
+      className: cn(className, (children as ReactElement<{className?: string}>).props.className),
       ...props,
-    })
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any)
   }
 
   return (
