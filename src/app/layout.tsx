@@ -1,11 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Fjalla_One } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+});
+
+const fjallaOne = Fjalla_One({
+  variable: "--font-fjalla-one",
+  subsets: ["cyrillic-ext"],
+  weight: "400",
+  style: "normal",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} antialiased`}
+        className={`${inter.variable} ${fjallaOne.variable} antialiased font-sans`}
       >
         <ThemeProvider
             attribute="class"
