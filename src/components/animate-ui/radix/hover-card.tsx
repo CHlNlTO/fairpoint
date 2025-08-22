@@ -16,7 +16,7 @@ type HoverCardContextType = {
 };
 
 const HoverCardContext = React.createContext<HoverCardContextType | undefined>(
-  undefined,
+  undefined
 );
 
 const useHoverCard = (): HoverCardContextType => {
@@ -46,7 +46,7 @@ type HoverCardProps = React.ComponentProps<typeof HoverCardPrimitive.Root>;
 
 function HoverCard({ children, ...props }: HoverCardProps) {
   const [isOpen, setIsOpen] = React.useState(
-    props?.open ?? props?.defaultOpen ?? false,
+    props?.open ?? props?.defaultOpen ?? false
   );
 
   React.useEffect(() => {
@@ -58,7 +58,7 @@ function HoverCard({ children, ...props }: HoverCardProps) {
       setIsOpen(open);
       props.onOpenChange?.(open);
     },
-    [props],
+    [props]
   );
 
   return (
@@ -117,13 +117,21 @@ function HoverCardContent({
             <motion.div
               key="hover-card-content"
               data-slot="hover-card-content"
-              initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
+              initial={{
+                opacity: 0,
+                scale: 0.5,
+                ...initialPosition,
+              }}
               animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-              exit={{ opacity: 0, scale: 0.5, ...initialPosition }}
+              exit={{
+                opacity: 0,
+                scale: 0.5,
+                ...initialPosition,
+              }}
               transition={transition}
               className={cn(
                 'w-64 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
-                className,
+                className
               )}
               {...props}
             >

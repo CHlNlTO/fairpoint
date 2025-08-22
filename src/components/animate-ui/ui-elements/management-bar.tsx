@@ -22,7 +22,12 @@ const BUTTON_MOTION_CONFIG = {
     rest: { maxWidth: '40px' },
     hover: {
       maxWidth: '140px',
-      transition: { type: 'spring', stiffness: 200, damping: 35, delay: 0.15 },
+      transition: {
+        type: 'spring',
+        stiffness: 200,
+        damping: 35,
+        delay: 0.15,
+      },
     },
     tap: { scale: 0.95 },
   },

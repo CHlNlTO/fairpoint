@@ -47,7 +47,7 @@ function CodeTabs({
     string
   > | null>(null);
   const [selectedCode, setSelectedCode] = React.useState<string>(
-    value ?? defaultValue ?? Object.keys(codes)[0] ?? '',
+    value ?? defaultValue ?? Object.keys(codes)[0] ?? ''
   );
 
   React.useEffect(() => {
@@ -83,11 +83,11 @@ function CodeTabs({
       data-slot="install-tabs"
       className={cn(
         'w-full gap-0 bg-muted/50 rounded-xl border overflow-hidden',
-        className,
+        className
       )}
       {...props}
       value={selectedCode}
-      onValueChange={(val) => {
+      onValueChange={val => {
         setSelectedCode(val);
         onValueChange?.(val);
       }}
@@ -99,7 +99,7 @@ function CodeTabs({
       >
         <div className="flex gap-x-3 h-full">
           {highlightedCodes &&
-            Object.keys(highlightedCodes).map((code) => (
+            Object.keys(highlightedCodes).map(code => (
               <TabsTrigger
                 key={code}
                 value={code}

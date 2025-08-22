@@ -32,7 +32,7 @@ const buttonVariants = cva(
       variant: 'default',
       size: 'default',
     },
-  },
+  }
 );
 
 const rippleVariants = cva('absolute rounded-full size-5 pointer-events-none', {
@@ -94,13 +94,13 @@ function RippleButton({
         y,
       };
 
-      setRipples((prev) => [...prev, newRipple]);
+      setRipples(prev => [...prev, newRipple]);
 
       setTimeout(() => {
-        setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
+        setRipples(prev => prev.filter(r => r.id !== newRipple.id));
       }, 600);
     },
-    [],
+    []
   );
 
   const handleClick = React.useCallback(
@@ -110,7 +110,7 @@ function RippleButton({
         onClick(event);
       }
     },
-    [createRipple, onClick],
+    [createRipple, onClick]
   );
 
   return (
@@ -124,14 +124,14 @@ function RippleButton({
       {...props}
     >
       {children}
-      {ripples.map((ripple) => (
+      {ripples.map(ripple => (
         <motion.span
           key={ripple.id}
           initial={{ scale: 0, opacity: 0.5 }}
           animate={{ scale, opacity: 0 }}
           transition={transition}
           className={cn(
-            rippleVariants({ variant, className: rippleClassName }),
+            rippleVariants({ variant, className: rippleClassName })
           )}
           style={{
             top: ripple.y - 10,

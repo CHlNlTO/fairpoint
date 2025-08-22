@@ -34,7 +34,7 @@ function Counter({
       transition={transition}
       className={cn(
         'flex items-center gap-x-2 p-1 rounded-xl bg-neutral-100 dark:bg-neutral-800',
-        className,
+        className
       )}
       {...props}
     >
@@ -45,7 +45,7 @@ function Counter({
           onClick={() => setNumber(number - 1)}
           className={cn(
             'bg-white dark:bg-neutral-950 hover:bg-white/70 dark:hover:bg-neutral-950/70 text-neutral-950 dark:text-white text-2xl font-light pb-[3px]',
-            buttonProps?.className,
+            buttonProps?.className
           )}
         >
           -
@@ -65,7 +65,7 @@ function Counter({
           onClick={() => setNumber(number + 1)}
           className={cn(
             'bg-white dark:bg-neutral-950 hover:bg-white/70 dark:hover:bg-neutral-950/70 text-neutral-950 dark:text-white text-2xl font-light pb-[3px]',
-            buttonProps?.className,
+            buttonProps?.className
           )}
         >
           +

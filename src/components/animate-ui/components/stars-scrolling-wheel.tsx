@@ -20,7 +20,7 @@ const formatter = new Intl.NumberFormat('en-US');
 function generateRange(
   max: number,
   step: number,
-  sideItemsCount: number,
+  sideItemsCount: number
 ): number[] {
   const result: number[] = [];
   const end = max + sideItemsCount * step;
@@ -69,7 +69,7 @@ function StarsScrollingWheel({
   const displayedItemsCount = 1 + sideItemsCount * 2;
   const range = React.useMemo(
     () => generateRange(stars, step, sideItemsCount),
-    [stars, step, sideItemsCount],
+    [stars, step, sideItemsCount]
   );
 
   const initialY = -(itemHeight * sideItemsCount);
@@ -88,19 +88,19 @@ function StarsScrollingWheel({
 
   const currentIndex = useTransform(
     ySpring,
-    (y) => y / itemHeight + sideItemsCount,
+    y => y / itemHeight + sideItemsCount
   );
-  const currentValue = useTransform(currentIndex, (idx) => idx * step);
+  const currentValue = useTransform(currentIndex, idx => idx * step);
   const completedTransform = useTransform(
     currentValue,
-    (val) => val >= stars * 0.99,
+    val => val >= stars * 0.99
   );
 
   const [isCompleted, setCompleted] = React.useState<boolean>(
-    completedTransform.get(),
+    completedTransform.get()
   );
   React.useEffect(() => {
-    const unsubscribe = completedTransform.on('change', (latest) => {
+    const unsubscribe = completedTransform.on('change', latest => {
       if (latest) setCompleted(true);
     });
     return unsubscribe;
@@ -111,7 +111,7 @@ function StarsScrollingWheel({
       ref={containerRef}
       className={cn(
         'relative overflow-hidden w-[200px] bg-background',
-        className,
+        className
       )}
       style={{ height: itemHeight * displayedItemsCount, ...style }}
       {...props}
@@ -155,21 +155,40 @@ function StarsScrollingWheel({
                         'radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(255,215,0,0) 70%)',
                     }}
                     initial={{ scale: 1.2, opacity: 0 }}
-                    animate={{ scale: [1.2, 1.8, 1.2], opacity: [0, 0.3, 0] }}
-                    transition={{ duration: 1.2, ease: 'easeInOut' }}
+                    animate={{
+                      scale: [1.2, 1.8, 1.2],
+                      opacity: [0, 0.3, 0],
+                    }}
+                    transition={{
+                      duration: 1.2,
+                      ease: 'easeInOut',
+                    }}
                   />
                   <motion.div
                     className="absolute inset-0 rounded-full"
-                    style={{ boxShadow: '0 0 10px 2px rgba(255,215,0,0.6)' }}
+                    style={{
+                      boxShadow: '0 0 10px 2px rgba(255,215,0,0.6)',
+                    }}
                     initial={{ scale: 1, opacity: 0 }}
-                    animate={{ scale: [1, 1.5], opacity: [0.8, 0] }}
-                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    animate={{
+                      scale: [1, 1.5],
+                      opacity: [0.8, 0],
+                    }}
+                    transition={{
+                      duration: 0.8,
+                      ease: 'easeOut',
+                    }}
                   />
                   {[...Array(6)].map((_, i) => (
                     <motion.div
                       key={i}
                       className="absolute w-1 h-1 rounded-full bg-yellow-500"
-                      initial={{ x: '50%', y: '50%', scale: 0, opacity: 0 }}
+                      initial={{
+                        x: '50%',
+                        y: '50%',
+                        scale: 0,
+                        opacity: 0,
+                      }}
                       animate={{
                         x: `calc(50% + ${Math.cos((i * Math.PI) / 3) * 30}px)`,
                         y: `calc(50% + ${Math.sin((i * Math.PI) / 3) * 30}px)`,
@@ -194,7 +213,7 @@ function StarsScrollingWheel({
         className="absolute left-17 bottom-0 text-start flex items-center justify-center flex-col"
         style={{ y: ySpring }}
       >
-        {range.map((value) => (
+        {range.map(value => (
           <div
             key={value}
             className="text-2xl font-bold flex items-center justify-start w-full"

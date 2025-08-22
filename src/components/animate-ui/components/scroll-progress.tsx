@@ -25,7 +25,7 @@ function ScrollProgress({
   React.useImperativeHandle(ref, () => containerRef.current as HTMLDivElement);
 
   const { scrollYProgress } = useScroll(
-    children ? { container: containerRef } : undefined,
+    children ? { container: containerRef } : undefined
   );
 
   const scaleX = useSpring(scrollYProgress, {
@@ -42,7 +42,7 @@ function ScrollProgress({
         style={{ scaleX }}
         className={cn(
           'fixed z-50 top-0 inset-x-0 h-1 bg-blue-500 origin-left',
-          progressProps?.className,
+          progressProps?.className
         )}
       />
       {containerRef && (

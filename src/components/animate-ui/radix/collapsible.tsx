@@ -29,7 +29,7 @@ type CollapsibleProps = React.ComponentProps<typeof CollapsiblePrimitive.Root>;
 
 function Collapsible({ children, ...props }: CollapsibleProps) {
   const [isOpen, setIsOpen] = React.useState(
-    props?.open ?? props?.defaultOpen ?? false,
+    props?.open ?? props?.defaultOpen ?? false
   );
 
   React.useEffect(() => {
@@ -41,7 +41,7 @@ function Collapsible({ children, ...props }: CollapsibleProps) {
       setIsOpen(open);
       props.onOpenChange?.(open);
     },
-    [props],
+    [props]
   );
 
   return (
@@ -91,7 +91,11 @@ function CollapsibleContent({
             data-slot="collapsible-content"
             layout
             initial={{ opacity: 0, height: 0, overflow: 'hidden' }}
-            animate={{ opacity: 1, height: 'auto', overflow: 'hidden' }}
+            animate={{
+              opacity: 1,
+              height: 'auto',
+              overflow: 'hidden',
+            }}
             exit={{ opacity: 0, height: 0, overflow: 'hidden' }}
             transition={transition}
             className={className}

@@ -59,7 +59,7 @@ function CountingNumber({
   }, [isInView, number, motionVal]);
 
   React.useEffect(() => {
-    const unsubscribe = springVal.on('change', (latest) => {
+    const unsubscribe = springVal.on('change', latest => {
       if (localRef.current) {
         let formatted =
           decimals > 0

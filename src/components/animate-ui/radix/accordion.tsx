@@ -80,8 +80,8 @@ function AccordionTrigger({
     const node = triggerRef.current;
     if (!node) return;
 
-    const observer = new MutationObserver((mutationsList) => {
-      mutationsList.forEach((mutation) => {
+    const observer = new MutationObserver(mutationsList => {
+      mutationsList.forEach(mutation => {
         if (mutation.attributeName === 'data-state') {
           const currentState = node.getAttribute('data-state');
           setIsOpen(currentState === 'open');
@@ -106,7 +106,7 @@ function AccordionTrigger({
         data-slot="accordion-trigger"
         className={cn(
           'flex flex-1 text-start items-center justify-between py-4 font-medium hover:underline',
-          className,
+          className
         )}
         {...props}
       >
@@ -149,7 +149,11 @@ function AccordionContent({
             key="accordion-content"
             data-slot="accordion-content"
             initial={{ height: 0, opacity: 0, '--mask-stop': '0%' }}
-            animate={{ height: 'auto', opacity: 1, '--mask-stop': '100%' }}
+            animate={{
+              height: 'auto',
+              opacity: 1,
+              '--mask-stop': '100%',
+            }}
             exit={{ height: 0, opacity: 0, '--mask-stop': '0%' }}
             transition={transition}
             style={{

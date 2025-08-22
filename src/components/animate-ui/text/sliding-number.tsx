@@ -70,7 +70,7 @@ function SlidingNumberDisplay({
   height,
   transition,
 }: SlidingNumberDisplayProps) {
-  const y = useTransform(motionValue, (latest) => {
+  const y = useTransform(motionValue, latest => {
     if (!height) return 0;
     const currentNumber = latest % 10;
     const offset = (10 + number - currentNumber) % 10;
@@ -136,13 +136,13 @@ function SlidingNumber({
 
   const effectiveNumber = React.useMemo(
     () => (!isInView ? 0 : Math.abs(Number(number))),
-    [number, isInView],
+    [number, isInView]
   );
 
   const formatNumber = React.useCallback(
     (num: number) =>
       decimalPlaces != null ? num.toFixed(decimalPlaces) : num.toString(),
-    [decimalPlaces],
+    [decimalPlaces]
   );
 
   const numberStr = formatNumber(effectiveNumber);
@@ -178,18 +178,18 @@ function SlidingNumber({
   const intPlaces = React.useMemo(
     () =>
       Array.from({ length: intDigitCount }, (_, i) =>
-        Math.pow(10, intDigitCount - i - 1),
+        Math.pow(10, intDigitCount - i - 1)
       ),
-    [intDigitCount],
+    [intDigitCount]
   );
   const decPlaces = React.useMemo(
     () =>
       newDecStrRaw
         ? Array.from({ length: newDecStrRaw.length }, (_, i) =>
-            Math.pow(10, newDecStrRaw.length - i - 1),
+            Math.pow(10, newDecStrRaw.length - i - 1)
           )
         : [],
-    [newDecStrRaw],
+    [newDecStrRaw]
   );
 
   const newDecValue = newDecStrRaw ? parseInt(newDecStrRaw, 10) : 0;
@@ -204,7 +204,7 @@ function SlidingNumber({
     >
       {isInView && Number(number) < 0 && <span className="mr-1">-</span>}
 
-      {intPlaces.map((place) => (
+      {intPlaces.map(place => (
         <SlidingNumberRoller
           key={`int-${place}`}
           prevValue={parseInt(adjustedPrevInt, 10)}
@@ -217,7 +217,7 @@ function SlidingNumber({
       {newDecStrRaw && (
         <>
           <span>{decimalSeparator}</span>
-          {decPlaces.map((place) => (
+          {decPlaces.map(place => (
             <SlidingNumberRoller
               key={`dec-${place}`}
               prevValue={prevDecValue}

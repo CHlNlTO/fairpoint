@@ -38,7 +38,7 @@ const getPathTransition = (isChecked: boolean): Transition => ({
 
 function PlayfulTodolist() {
   const [checked, setChecked] = React.useState(
-    checkboxItems.map((i) => !!i.defaultChecked),
+    checkboxItems.map(i => !!i.defaultChecked)
   );
 
   return (
@@ -48,7 +48,7 @@ function PlayfulTodolist() {
           <div className="flex items-center space-x-2">
             <Checkbox
               checked={checked[idx]}
-              onCheckedChange={(val) => {
+              onCheckedChange={val => {
                 const updated = [...checked];
                 updated[idx] = val === true;
                 setChecked(updated);

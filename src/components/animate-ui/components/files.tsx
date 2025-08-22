@@ -44,7 +44,7 @@ function FileButton({
         data-slot="file-button"
         className={cn(
           'flex items-center truncate gap-2 p-2 h-10 relative z-10 rounded-lg w-full cursor-default',
-          className,
+          className
         )}
         {...props}
       >
@@ -104,7 +104,7 @@ function Files({
       data-slot="files"
       className={cn(
         'relative size-full rounded-xl border bg-background overflow-auto',
-        className,
+        className
       )}
       {...props}
     >
@@ -114,7 +114,7 @@ function Files({
         hover
         className={cn(
           'bg-muted rounded-lg pointer-events-none',
-          activeClassName,
+          activeClassName
         )}
       >
         <Accordion

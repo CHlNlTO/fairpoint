@@ -16,7 +16,7 @@ type PopoverContextType = {
 };
 
 const PopoverContext = React.createContext<PopoverContextType | undefined>(
-  undefined,
+  undefined
 );
 
 const usePopover = (): PopoverContextType => {
@@ -46,7 +46,7 @@ type PopoverProps = React.ComponentProps<typeof PopoverPrimitive.Root>;
 
 function Popover({ children, ...props }: PopoverProps) {
   const [isOpen, setIsOpen] = React.useState(
-    props?.open ?? props?.defaultOpen ?? false,
+    props?.open ?? props?.defaultOpen ?? false
   );
 
   React.useEffect(() => {
@@ -58,7 +58,7 @@ function Popover({ children, ...props }: PopoverProps) {
       setIsOpen(open);
       props.onOpenChange?.(open);
     },
-    [props],
+    [props]
   );
 
   return (
@@ -115,13 +115,21 @@ function PopoverContent({
             <motion.div
               key="popover-content"
               data-slot="popover-content"
-              initial={{ opacity: 0, scale: 0.5, ...initialPosition }}
+              initial={{
+                opacity: 0,
+                scale: 0.5,
+                ...initialPosition,
+              }}
               animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-              exit={{ opacity: 0, scale: 0.5, ...initialPosition }}
+              exit={{
+                opacity: 0,
+                scale: 0.5,
+                ...initialPosition,
+              }}
               transition={transition}
               className={cn(
                 'w-72 rounded-lg border bg-popover p-4 text-popover-foreground shadow-md outline-none',
-                className,
+                className
               )}
               {...props}
             >

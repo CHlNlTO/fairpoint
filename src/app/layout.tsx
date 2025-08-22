@@ -1,23 +1,25 @@
-import type { Metadata } from "next";
-import { Inter, Fjalla_One } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider"
+import type { Metadata } from 'next';
+import { Inter, Fjalla_One } from 'next/font/google';
+import './globals.css';
+import { ThemeProvider } from '@/components/theme-provider';
+import QueryProvider from '@/components/providers/query-provider';
+import '@/lib/env';
 
 const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+  variable: '--font-inter',
+  subsets: ['latin'],
 });
 
 const fjallaOne = Fjalla_One({
-  variable: "--font-fjalla-one",
-  subsets: ["cyrillic-ext"],
-  weight: "400",
-  style: "normal",
+  variable: '--font-fjalla-one',
+  subsets: ['cyrillic-ext'],
+  weight: '400',
+  style: 'normal',
 });
 
 export const metadata: Metadata = {
-  title: "Fairpoint Software",
-  description: "Your trusted partner in accounting software solutions.",
+  title: 'Fairpoint Software',
+  description: 'Your trusted partner in accounting software solutions.',
 };
 
 export default function RootLayout({
@@ -31,13 +33,13 @@ export default function RootLayout({
         className={`${inter.variable} ${fjallaOne.variable} antialiased font-sans`}
       >
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <QueryProvider>{children}</QueryProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

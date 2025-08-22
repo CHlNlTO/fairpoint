@@ -22,7 +22,7 @@ function Switch({
   ...props
 }: SwitchProps) {
   const [isChecked, setIsChecked] = React.useState(
-    props?.checked ?? props?.defaultChecked ?? false,
+    props?.checked ?? props?.defaultChecked ?? false
   );
   const [isTapped, setIsTapped] = React.useState(false);
 
@@ -35,7 +35,7 @@ function Switch({
       setIsChecked(checked);
       onCheckedChange?.(checked);
     },
-    [onCheckedChange],
+    [onCheckedChange]
   );
 
   return (
@@ -48,7 +48,7 @@ function Switch({
         data-slot="switch"
         className={cn(
           'relative flex p-[3px] h-6 w-10 shrink-0 cursor-pointer items-center rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 data-[state=checked]:bg-primary data-[state=unchecked]:bg-input data-[state=checked]:justify-end data-[state=unchecked]:justify-start',
-          className,
+          className
         )}
         whileTap="tap"
         initial={false}
@@ -64,7 +64,7 @@ function Switch({
               isChecked ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }
             }
             transition={{ type: 'spring', bounce: 0 }}
-            className="absolute [&_svg]:size-3 left-1 top-1/2 -translate-y-1/2 dark:text-neutral-500 text-neutral-400"
+            className="absolute [&_svg]:size-3 left-1 top-1/2 -translate-y-1/2"
           >
             {typeof leftIcon !== 'string' ? leftIcon : null}
           </motion.div>
@@ -88,10 +88,14 @@ function Switch({
             data-slot="switch-thumb"
             whileTap="tab"
             className={cn(
-              'relative z-[1] [&_svg]:size-3 flex items-center justify-center rounded-full bg-background shadow-lg ring-0 dark:text-neutral-400 text-neutral-500',
+              'relative z-[1] [&_svg]:size-3 flex items-center justify-center rounded-full dark:bg-secondary-foreground bg-background shadow-lg ring-0 dark:text-neutral-400 text-neutral-500'
             )}
             layout
-            transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+            transition={{
+              type: 'spring',
+              stiffness: 300,
+              damping: 25,
+            }}
             style={{
               width: 18,
               height: 18,

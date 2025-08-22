@@ -20,7 +20,7 @@ type CursorContextType = {
 };
 
 const CursorContext = React.createContext<CursorContextType | undefined>(
-  undefined,
+  undefined
 );
 
 const useCursor = (): CursorContextType => {
@@ -113,7 +113,7 @@ function Cursor({ ref, children, className, style, ...props }: CursorProps) {
           data-slot="cursor"
           className={cn(
             'transform-[translate(-50%,-50%)] pointer-events-none z-[9999] absolute',
-            className,
+            className
           )}
           style={{ top: y, left: x, ...style }}
           initial={{ scale: 0, opacity: 0 }}
@@ -160,7 +160,7 @@ function CursorFollow({
   const cursorFollowRef = React.useRef<HTMLDivElement>(null);
   React.useImperativeHandle(
     ref,
-    () => cursorFollowRef.current as HTMLDivElement,
+    () => cursorFollowRef.current as HTMLDivElement
   );
 
   const x = useMotionValue(0);
@@ -229,7 +229,7 @@ function CursorFollow({
           data-slot="cursor-follow"
           className={cn(
             'transform-[translate(-50%,-50%)] pointer-events-none z-[9998] absolute',
-            className,
+            className
           )}
           style={{ top: springY, left: springX, ...style }}
           initial={{ scale: 0, opacity: 0 }}

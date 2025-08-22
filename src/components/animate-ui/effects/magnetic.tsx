@@ -67,7 +67,7 @@ function Magnetic({
         rawY.set(0);
       }
     },
-    [active, onlyOnHover, range, strength, rawX, rawY],
+    [active, onlyOnHover, range, strength, rawX, rawY]
   );
 
   React.useEffect(() => {
@@ -81,17 +81,17 @@ function Magnetic({
     <motion.div
       ref={localRef}
       style={{ display: 'inline-block', ...style, x, y }}
-      onMouseEnter={(e) => {
+      onMouseEnter={e => {
         if (onlyOnHover) setActive(true);
         onMouseEnter?.(e);
       }}
-      onMouseLeave={(e) => {
+      onMouseLeave={e => {
         if (onlyOnHover) setActive(false);
         rawX.set(0);
         rawY.set(0);
         onMouseLeave?.(e);
       }}
-      onMouseMove={(e) => {
+      onMouseMove={e => {
         if (onlyOnHover) compute(e);
         onMouseMove?.(e);
       }}

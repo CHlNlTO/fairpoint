@@ -63,7 +63,7 @@ function GitHubStarsButton({
   const springVal = useSpring(motionVal, transition);
   const motionNumberRef = React.useRef(0);
   const isCompletedRef = React.useRef(false);
-  const [, forceRender] = React.useReducer((x) => x + 1, 0);
+  const [, forceRender] = React.useReducer(x => x + 1, 0);
   const [stars, setStars] = React.useState(0);
   const [isCompleted, setIsCompleted] = React.useState(false);
   const [displayParticles, setDisplayParticles] = React.useState(false);
@@ -71,13 +71,13 @@ function GitHubStarsButton({
 
   const repoUrl = React.useMemo(
     () => `https://github.com/${username}/${repo}`,
-    [username, repo],
+    [username, repo]
   );
 
   React.useEffect(() => {
     fetch(`https://api.github.com/repos/${username}/${repo}`)
-      .then((response) => response.json())
-      .then((data) => {
+      .then(response => response.json())
+      .then(data => {
         if (data && typeof data.stargazers_count === 'number') {
           setStars(data.stargazers_count);
         }
@@ -127,12 +127,12 @@ function GitHubStarsButton({
   const renderNumberSegments = (
     segments: string[],
     unit: string,
-    isGhost: boolean,
+    isGhost: boolean
   ) => (
     <span
       className={cn(
         'flex items-center gap-px',
-        isGhost ? 'invisible' : 'absolute top-0 left-0',
+        isGhost ? 'invisible' : 'absolute top-0 left-0'
       )}
     >
       {segments.map((segment, index) => (
@@ -153,7 +153,7 @@ function GitHubStarsButton({
       handleDisplayParticles();
       setTimeout(() => window.open(repoUrl, '_blank'), 500);
     },
-    [handleDisplayParticles, repoUrl],
+    [handleDisplayParticles, repoUrl]
   );
 
   if (isLoading) return null;
@@ -169,7 +169,7 @@ function GitHubStarsButton({
       onClick={handleClick}
       className={cn(
         "flex items-center gap-2 text-sm bg-primary text-primary-foreground rounded-lg px-4 py-2 h-10 has-[>svg]:px-3 cursor-pointer whitespace-nowrap font-medium transition-colors disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-[18px] shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
-        className,
+        className
       )}
       {...props}
     >
@@ -200,12 +200,20 @@ function GitHubStarsButton({
                     'radial-gradient(circle, rgba(255,215,0,0.4) 0%, rgba(255,215,0,0) 70%)',
                 }}
                 initial={{ scale: 1.2, opacity: 0 }}
-                animate={{ scale: [1.2, 1.8, 1.2], opacity: [0, 0.3, 0] }}
-                transition={{ duration: 1.2, ease: 'easeInOut' }}
+                animate={{
+                  scale: [1.2, 1.8, 1.2],
+                  opacity: [0, 0.3, 0],
+                }}
+                transition={{
+                  duration: 1.2,
+                  ease: 'easeInOut',
+                }}
               />
               <motion.div
                 className="absolute inset-0 rounded-full"
-                style={{ boxShadow: '0 0 10px 2px rgba(255,215,0,0.6)' }}
+                style={{
+                  boxShadow: '0 0 10px 2px rgba(255,215,0,0.6)',
+                }}
                 initial={{ scale: 1, opacity: 0 }}
                 animate={{ scale: [1, 1.5], opacity: [0.8, 0] }}
                 transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -214,7 +222,12 @@ function GitHubStarsButton({
                 <motion.div
                   key={i}
                   className="absolute w-1 h-1 rounded-full bg-yellow-500"
-                  initial={{ x: '50%', y: '50%', scale: 0, opacity: 0 }}
+                  initial={{
+                    x: '50%',
+                    y: '50%',
+                    scale: 0,
+                    opacity: 0,
+                  }}
                   animate={{
                     x: `calc(50% + ${Math.cos((i * Math.PI) / 3) * 30}px)`,
                     y: `calc(50% + ${Math.sin((i * Math.PI) / 3) * 30}px)`,
@@ -236,12 +249,12 @@ function GitHubStarsButton({
         {renderNumberSegments(
           ghostFormattedNumber.number,
           ghostFormattedNumber.unit,
-          true,
+          true
         )}
         {renderNumberSegments(
           formattedResult.number,
           formattedResult.unit,
-          false,
+          false
         )}
       </span>
     </motion.a>

@@ -43,7 +43,7 @@ function FlipButton({
   const buildVariant = (
     opacity: number,
     rotation: number,
-    offset: string | null = null,
+    offset: string | null = null
   ): Variant => ({
     opacity,
     [rotateAxis]: rotation,
@@ -69,7 +69,7 @@ function FlipButton({
       whileTap={{ scale: 0.95 }}
       className={cn(
         'relative inline-block h-10 px-4 py-2 text-sm font-medium cursor-pointer perspective-[1000px] focus:outline-none',
-        className,
+        className
       )}
       {...props}
     >
@@ -80,7 +80,7 @@ function FlipButton({
         className={cn(
           DEFAULT_SPAN_CLASS_NAME,
           'bg-muted text-black dark:text-white',
-          frontClassName,
+          frontClassName
         )}
       >
         {frontText}
@@ -92,7 +92,7 @@ function FlipButton({
         className={cn(
           DEFAULT_SPAN_CLASS_NAME,
           'bg-primary text-primary-foreground',
-          backClassName,
+          backClassName
         )}
       >
         {backText}

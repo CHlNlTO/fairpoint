@@ -104,7 +104,7 @@ function StarsBackground({
       offsetX.set(newOffsetX);
       offsetY.set(newOffsetY);
     },
-    [offsetX, offsetY, factor],
+    [offsetX, offsetY, factor]
   );
 
   return (
@@ -112,7 +112,7 @@ function StarsBackground({
       data-slot="stars-background"
       className={cn(
         'relative size-full overflow-hidden bg-[radial-gradient(ellipse_at_bottom,_#262626_0%,_#000_100%)]',
-        className,
+        className
       )}
       onMouseMove={handleMouseMove}
       {...props}
@@ -124,7 +124,11 @@ function StarsBackground({
         <StarLayer
           count={1000}
           size={1}
-          transition={{ repeat: Infinity, duration: speed, ease: 'linear' }}
+          transition={{
+            repeat: Infinity,
+            duration: speed,
+            ease: 'linear',
+          }}
           starColor={starColor}
         />
         <StarLayer

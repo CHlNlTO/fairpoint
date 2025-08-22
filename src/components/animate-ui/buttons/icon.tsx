@@ -43,7 +43,7 @@ function IconButton({
       className={cn(
         `group/icon-button cursor-pointer relative inline-flex size-10 shrink-0 rounded-full hover:bg-[var(--icon-button-color)]/10 active:bg-[var(--icon-button-color)]/20 text-[var(--icon-button-color)]`,
         sizes[size],
-        className,
+        className
       )}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -89,7 +89,10 @@ function IconButton({
                 background: `radial-gradient(circle, rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.4) 0%, rgba(${color[0]}, ${color[1]}, ${color[2]}, 0) 70%)`,
               }}
               initial={{ scale: 1.2, opacity: 0 }}
-              animate={{ scale: [1.2, 1.8, 1.2], opacity: [0, 0.3, 0] }}
+              animate={{
+                scale: [1.2, 1.8, 1.2],
+                opacity: [0, 0.3, 0],
+              }}
               transition={{ duration: 1.2, ease: 'easeInOut' }}
             />
             <motion.div
@@ -105,14 +108,23 @@ function IconButton({
               <motion.div
                 key={i}
                 className="absolute w-1 h-1 rounded-full bg-[var(--icon-button-color)]"
-                initial={{ x: '50%', y: '50%', scale: 0, opacity: 0 }}
+                initial={{
+                  x: '50%',
+                  y: '50%',
+                  scale: 0,
+                  opacity: 0,
+                }}
                 animate={{
                   x: `calc(50% + ${Math.cos((i * Math.PI) / 3) * 30}px)`,
                   y: `calc(50% + ${Math.sin((i * Math.PI) / 3) * 30}px)`,
                   scale: [0, 1, 0],
                   opacity: [0, 1, 0],
                 }}
-                transition={{ duration: 0.8, delay: i * 0.05, ease: 'easeOut' }}
+                transition={{
+                  duration: 0.8,
+                  delay: i * 0.05,
+                  ease: 'easeOut',
+                }}
               />
             ))}
           </>

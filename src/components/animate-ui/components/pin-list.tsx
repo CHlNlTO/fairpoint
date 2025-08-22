@@ -56,16 +56,16 @@ function PinList({
     'pinned' | 'unpinned' | null
   >(null);
 
-  const pinned = listItems.filter((u) => u.pinned);
-  const unpinned = listItems.filter((u) => !u.pinned);
+  const pinned = listItems.filter(u => u.pinned);
+  const unpinned = listItems.filter(u => !u.pinned);
 
   const toggleStatus = (id: number) => {
-    const item = listItems.find((u) => u.id === id);
+    const item = listItems.find(u => u.id === id);
     if (!item) return;
 
     setTogglingGroup(item.pinned ? 'pinned' : 'unpinned');
-    setListItems((prev) => {
-      const idx = prev.findIndex((u) => u.id === id);
+    setListItems(prev => {
+      const idx = prev.findIndex(u => u.id === id);
       if (idx === -1) return prev;
       const updated = [...prev];
       const [item] = updated.splice(idx, 1);
@@ -90,7 +90,7 @@ function PinList({
                 key="pinned-label"
                 className={cn(
                   'font-medium px-3 text-neutral-500 dark:text-neutral-300 text-sm mb-2',
-                  labelClassName,
+                  labelClassName
                 )}
                 {...labelMotionProps}
               >
@@ -103,10 +103,10 @@ function PinList({
               className={cn(
                 'space-y-3 relative',
                 togglingGroup === 'pinned' ? 'z-5' : 'z-10',
-                pinnedSectionClassName,
+                pinnedSectionClassName
               )}
             >
-              {pinned.map((item) => (
+              {pinned.map(item => (
                 <motion.div
                   key={item.id}
                   layoutId={`item-${item.id}`}
@@ -142,7 +142,7 @@ function PinList({
                 key="all-label"
                 className={cn(
                   'font-medium px-3 text-neutral-500 dark:text-neutral-300 text-sm mb-2',
-                  labelClassName,
+                  labelClassName
                 )}
                 {...labelMotionProps}
               >
@@ -155,10 +155,10 @@ function PinList({
               className={cn(
                 'space-y-3 relative',
                 togglingGroup === 'unpinned' ? 'z-5' : 'z-10',
-                unpinnedSectionClassName,
+                unpinnedSectionClassName
               )}
             >
-              {unpinned.map((item) => (
+              {unpinned.map(item => (
                 <motion.div
                   key={item.id}
                   layoutId={`item-${item.id}`}

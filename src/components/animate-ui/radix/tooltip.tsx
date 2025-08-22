@@ -11,7 +11,7 @@ type TooltipContextType = {
 };
 
 const TooltipContext = React.createContext<TooltipContextType | undefined>(
-  undefined,
+  undefined
 );
 
 const useTooltip = (): TooltipContextType => {
@@ -49,7 +49,7 @@ type TooltipProps = React.ComponentProps<typeof TooltipPrimitive.Root>;
 
 function Tooltip(props: TooltipProps) {
   const [isOpen, setIsOpen] = React.useState(
-    props?.open ?? props?.defaultOpen ?? false,
+    props?.open ?? props?.defaultOpen ?? false
   );
 
   React.useEffect(() => {
@@ -61,7 +61,7 @@ function Tooltip(props: TooltipProps) {
       setIsOpen(open);
       props.onOpenChange?.(open);
     },
-    [props],
+    [props]
   );
 
   return (
@@ -115,13 +115,17 @@ function TooltipContent({
             <motion.div
               key="tooltip-content"
               data-slot="tooltip-content"
-              initial={{ opacity: 0, scale: 0, ...initialPosition }}
+              initial={{
+                opacity: 0,
+                scale: 0,
+                ...initialPosition,
+              }}
               animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
               exit={{ opacity: 0, scale: 0, ...initialPosition }}
               transition={transition}
               className={cn(
                 'relative bg-primary text-primary-foreground shadow-md w-fit origin-(--radix-tooltip-content-transform-origin) rounded-md px-3 py-1.5 text-sm text-balance',
-                className,
+                className
               )}
             >
               {children}

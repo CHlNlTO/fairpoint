@@ -31,7 +31,7 @@ function RotatingText({
   React.useEffect(() => {
     if (!Array.isArray(text)) return;
     const interval = setInterval(() => {
-      setIndex((prevIndex) => (prevIndex + 1) % text.length);
+      setIndex(prevIndex => (prevIndex + 1) % text.length);
     }, duration);
     return () => clearInterval(interval);
   }, [text, duration]);
